@@ -1,0 +1,26 @@
+services:
+  jupyterlab:
+    image: my_jupyter_lab
+    #image: nvcr.io/nvidia/pytorch:23.09-py3
+    build: .
+    volumes:
+      - ./workspace:/workspace
+      - ./jupyter:/root/.jupyter
+    tty: true
+    stdin_open: true
+    ports:
+      - 8888:8888
+    restart: always
+    networks:
+      - default
+    environment:
+      - TZ=Asia/Tokyo
+    command: "jupyter lab --no-browser --allow-root --ip=0.0.0.0 --port=8888 --NotebookApp.token=''"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    container_name: jupyterlab

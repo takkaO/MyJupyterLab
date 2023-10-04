@@ -1,0 +1,10 @@
+{
+    // お知らせ
+    // @jupyterlab/apputils-extension:notification
+    // 通知設定
+    // *******************************************
+
+    // Jupyter公式ニュースを取得
+    // Jupyter news feedからニュースを取得するかどうか。`true` の場合、ウェブサイトにリクエストを送信します。
+    "fetchNews": "false"
+}
